@@ -1,0 +1,90 @@
+{% load static %}
+<div class="row" id="draft">
+    <div style="position:absolute;right:0;top:0;background:white;" class="nav flex-column nav-pills mobile" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="javascript:void(0)" role="tab" aria-controls="v-pills-home" aria-selected="true" onclick="is_active('all post')">All</a> {% if user.is_superuser%}
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="javascript:void(0)" role="tab" aria-controls="v-pills-home" aria-selected="true" onclick="is_active('draft')">Draft <i class='fas fa-envelope-open-text' ></i></a>
+        <!--  -->
+        {% endif %}
+
+    </div>
+    <div class="col-12">
+        <h1 style="font-family:'Great Vibes', cursive;margin-left:2%">All drafts:</h1>
+    </div>
+
+    {% if not drafts %}
+    <div class="col-6 offset-3" style="text-align: center;">
+        <h3 style="margin-top: 5%;font-family:'Great Vibes';">Draft list is empty</h3>
+    </div>
+
+    {% else %} {% for draft in drafts %}
+
+
+    <div class="card col-lg-4 col-md-6 col-lg-4 card-col" id='card{{draft.id}}' style="width: 18rem;">
+        <img class="card-img-top" src="{{draft.image.url}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{draft.title|safe}}</h5>
+            <p class="card-text">{{draft.body|safe|truncatewords:5}}</p>
+            <p style="color: grey;font-size:12px">created {{draft.created_date}} by <a href=""><b style="font-size: 15px;text-transform: capitalize;">{{post.author|truncatewords:3|linebreaksbr}}</b></a></p>
+
+            <a id='Delete{{draft.id}}' href='javascript:void(0)' data-url="{% url 'blog:draft_delete' post_id=draft.id %}" class="btn btn-danger Delete">Delete</a>
+            <a id='Publish{{draft.id}}' href='javascript:void(0)' data-url="{% url 'blog:draft_publish' post_id=draft.id %}" class="btn btn-primary Publish">Publish</a>
+
+
+
+
+        </div>
+    </div>
+
+    {%endfor%} {%endif%}
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.card .Delete').click(function() {
+
+            $.ajax({
+                url: $('#' + this.id).data('url'),
+                type: 'get',
+                success: function(response) {
+                    console.log(response)
+                    if (response.status == 'OK') {
+                        if (response.total_drafts == 0) {
+                            $('#draft').append('<div class="col-6 offset-3" style="text-align: center;"><h1 style = "margin-top: 5%;font-family:"Great Vibes";" > Draft list is empty </h1></div>')
+                        }
+
+
+                    }
+
+                }
+            })
+
+            $(this).parents('.card').hide(300);
+
+
+
+
+        })
+
+        $('.card .Publish').click(function() {
+            $.ajax({
+                url: $('#' + this.id).data('url'),
+                type: 'get',
+                success: function(response) {
+                    console.log(response)
+                    if (response.status == 'OK') {
+                        if (response.total_drafts == 0) {
+                            $('#draft').append('<div class="col-6 offset-3" style="text-align: center;"><h1 style = "margin-top: 5%;font-family:"Great Vibes";" > Draft list is empty </h1></div>')
+                        }
+
+
+                    }
+
+                }
+            })
+            $(this).parents('.card').hide(300);
+
+        })
+
+    });
+</script>

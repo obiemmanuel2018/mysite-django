@@ -1,0 +1,610 @@
+html {
+    transition: .5s ease;
+}
+
+body {
+    transition: .5s ease;
+}
+
+
+/* pause background after hire me or cv modal opens */
+
+.pause {
+    position: fixed;
+}
+
+
+/* hire section styling */
+.thanks-modal{
+    margin-left: 35%;
+    margin-top: 20%;
+    width: 100px;
+    height: 100px;
+    padding: 2rem 0rem;
+    background-color: white;
+    text-align: center;
+    z-index: 1;
+    display: none;
+
+
+}
+.thanks-modal p{
+    font: normal 500 20px/20px 'roboto';
+}
+.thanks-modal span{
+    position: absolute;
+    top:2%;
+    right: 2%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.site-main .hire-area .hire {
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.site-main .hire-area .hire .formContainer {
+    width: 100%;
+    height: auto;
+    border: .3px solid whitesmoke;
+    margin-top: 10%;
+    border-radius: 5px;
+    display: none;
+}
+
+.site-main .hire-area .hire .formContainer span {
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font: normal 500 25px/20px 'roboto';
+    cursor: pointer;
+}
+.hire-form {
+    margin: 3rem 2rem;
+}
+
+/* end hire section */
+
+
+/* Cv styling area */
+
+.site-main .cv-area .Cv {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.site-main .cv-area .Cv .CvContainer {
+    width: auto;
+    height: auto;
+    display: none;
+    padding: 1rem 8rem;
+}
+
+ .form-group label{
+    color: white !important;
+}
+
+
+
+.site-main .cv-area .Cv .CvContainer span {
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font: normal 500 25px/20px 'roboto';
+    cursor: pointer;
+}
+
+
+/* end cv styling area */
+
+
+/* styling navigation bar */
+
+.header_area .main-menu .navbar .navbar-brand {
+    padding: 0 2% 0 5%;
+}
+
+.header_area .main-menu .navbar {
+    padding: 1% 10%;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+}
+
+.header_area .main-menu .nav-item .nav-link {
+    font-family: 'Roboto', cursive;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem;
+    color: #141313;
+}
+
+.header_area .main-menu .navbar-nav .active a {
+    background: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header_area .main-menu .navbar-nav a:hover {
+    background: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+/* End navigation */
+
+
+/* start main styling */
+
+.site-main .site-banner .site-title h3 {
+    padding-top: 35%;
+    font-weight: 500;
+}
+
+.site-main .site-banner .site-title h3::after {
+    content: "";
+    background: black;
+    display: inline-block;
+    margin-left: 5%;
+    height: 2px;
+    width: 8vw;
+    transform: translateY(-10px);
+}
+
+.site-main .site-banner .site-title h1 {
+    font-size: 5rem;
+}
+
+.site-main .site-banner .site-title h4 {
+    font-size: 1.4rem;
+}
+
+.site-main .site-banner .banner-img {
+    margin-top: 20%;
+    margin-left: 20%;
+    height: 400px;
+    width: 500px;
+}
+
+.site-main .site-banner .banner-img img {
+    box-shadow: 0px 20px 30px black;
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.title-text {
+    font: normal bold 50px/72px 'roboto';
+}
+
+.button-primary {
+    background-color: #854fee;
+    background-clip: padding-box;
+    color: whitesmoke;
+    transition: background .6s ease;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+}
+
+.button-primary:hover {
+    background: whitesmoke;
+    background-clip: padding-box;
+    color: black;
+    border: 1px solid #854fee;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+}
+
+.button-secondary {
+    background-color: whitesmoke;
+    background-clip: padding-box;
+    transition: background .6s ease;
+    color: black;
+    border: 1px solid #854fee;
+}
+
+.button-secondary:hover {
+    background: #854fee;
+    color: whitesmoke;
+}
+
+
+/* end side banner */
+
+
+/* start about area */
+
+.site-main .about-area {
+    padding: 8rem 5rem;
+}
+
+.site-main .about-area .about-title h2>span {
+    display: block;
+    font: normal bold 49x/60px 'roboto';
+    letter-spacing: 21px;
+}
+
+.site-main .about-area .about-title .paragraph>p {
+    padding: .5rem 0;
+}
+
+.para p {
+    color: #141313;
+    font: normal 500 16px/25px 'roboto';
+}
+
+.about-area .about-image {
+    border-radius: 5px;
+    margin-top: 3rem;
+    margin-right: 2rem;
+}
+
+
+/* end about area */
+
+
+/* start brand area  */
+
+.single-brand {
+    border: 1px solid #201f1f17;
+    text-align: center;
+    padding: 1..8rem 0rem;
+    margin: 1rem .2rem;
+    width: 80px;
+    height: 80px;
+    transition: .6s ease;
+    filter: brightness(.7);
+    cursor: pointer;
+}
+
+.single-brand:hover {
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.single-brand img {
+    width: 80px;
+    height: 80px;
+}
+
+.site-main .brand-area .experience-area {
+    padding: 1rem;
+}
+
+.site-main .brand-area .experience-area span {
+    display: block;
+    margin-left: 1rem;
+}
+
+.site-main .brand-area .experience-area .years {
+    border: 1px dotted black;
+    border-radius: 50%;
+    padding: 2%;
+    background: linear-gradient(#854fee, purple);
+    font-size: 40px;
+    font-family: 'roboto', cursive;
+    color: whitesmoke;
+    box-shadow: 0px 10px 60px rgba(57, 56, 61, 0.205);
+}
+
+
+/* end brand area */
+
+
+/* services area */
+
+.site-main .services-area {
+    margin-top: 5%;
+}
+
+.site-main .services-area .services-title h1 {
+    font-size: 35px
+}
+
+.site-main .services-area .services {
+    background: whitesmoke;
+    padding: 2rem 0;
+    width: 16rem;
+    margin: 5rem .5rem;
+    transition: box-shadow .6s ease;
+    height: 390px;
+    transition: .6s ease;
+}
+
+.site-main .services-area .services:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 90px rgba(57, 56, 61, 0.205);
+}
+
+.site-main .services-area .services .services-img img {
+    margin-top: -20%;
+}
+
+
+/* end services area */
+
+
+/* start projects styling */
+
+.site-main .project-area {
+    padding: 4rem 0;
+}
+
+.site-main .project-area .button-groups button {
+    background: transparent;
+    border: none;
+    font: normal 500 16px/130px 'roboto';
+    text-transform: uppercase;
+}
+
+.site-main .project-area .button-groups button+button {
+    padding-left: 3rem;
+}
+
+.site-main .project-area .grid .our-project>title,
+h4 {
+    font: normal 700 25px/12px 'roboto';
+}
+
+.site-main .project-area .grid .our-project .img a:hover img {
+    filter: brightness(1.1) drop-shadow(3px 8px 3px #b1afaf);
+}
+
+button:active,
+button:hover,
+button:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+
+/* end projects styling */
+
+
+/* about me */
+
+.site-main .about-area .about-title p {
+    padding: 1rem 7rem;
+}
+
+.site-main .about-area .client {
+    background: #ffffff10;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    margin: 3rem 0rem;
+}
+
+.site-main .about-area .client .client-img {
+    padding: 2rem;
+}
+
+.site-main .about-area .client .about-client {
+    padding-top: 2rem;
+}
+
+.site-main .about-area .client .about-client h4 {
+    font: normal 500 21px/20px 'roboto';
+}
+
+.site-main .about-area .client .about-client p {
+    font-size: 14px;
+}
+
+.site-main .about-area .owl-carousel .owl-item {
+    display: flex;
+    padding: 0 1.5rem;
+    justify-content: center;
+}
+
+.site-main .about-area .owl-carousel .owl-dots .owl-dot-active span {
+    background: #4458dc;
+    width: 12px;
+    height: 12px;
+}
+
+
+/* end about me */
+
+
+/* start subscribe */
+
+.site-main .subscribe-area .subscribe {
+    background: linear-gradient(#854fee, purple);
+    padding: 10rem 1rem;
+    margin: 3rem auto;
+    border-radius: 10px;
+}
+
+.site-main .subscribe-area .subscribe .subscribe-title h4 {
+    font: normal 700 30px/30px 'roboto';
+    color: whitesmoke;
+}
+
+.site-main .subscribe-area .subscribe .subscribe-title p {
+    color: whitesmoke;
+    padding: 1rem 4rem;
+}
+
+.site-main .subscribe-area .subscribe form {
+    margin-left: 30%;
+}
+
+.site-main .subscribe-area .subscribe form .input-textbox input {
+    width: 400px;
+    padding: 1.5rem 1rem;
+    border: 1px solid whitesmoke;
+    background: transparent;
+    color: black;
+    font: normal 500 17px/22px 'roboto';
+}
+
+.site-main .subscribe-area .subscribe form .input-textbox input::placeholder {
+    color: whitesmoke;
+}
+
+@media (max-width: 575.98px) {
+    /* cv area */
+    .site-main .cv-area .Cv .CvContainer {
+    
+        margin-top:30% !important;
+        padding: 0rem !important;
+    }
+    .site-main .cv-area .Cv .CvContainer img{
+        margin-left: 0% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    /* end cv */
+    /* hire me area */
+    #spinner{
+        margin-top:20% !important;
+        margin-right: -2.5% !important;
+    }
+    .thanks-modal{
+        margin-left: 25% !important;
+        margin-top: 80% !important;
+        width: 200px !important;
+        height: 100px !important;
+        z-index: 1;
+      
+       
+    
+    }
+    .thanks-modal p{
+        font: normal 500 15px/20px 'roboto';
+    }
+    /* end hire me */
+    body {
+        overflow-x: hidden;
+    }
+    .navbar {
+        width: 100% !important;
+    }
+    /* banner */
+    .site-main .site-banner .banner-img {
+        margin-left: 0%;
+        width: 100%;
+    }
+    /* start about area */
+    .site-main .about-area {
+        padding: 8rem .5rem;
+    }
+    .site-main .about-area .about-title h2>span {
+        display: block;
+        font: normal bold 39x/60px 'roboto';
+        letter-spacing: 15px;
+    }
+    .about-area .about-image {
+        width: 100%;
+    }
+    /* end about area */
+    .single-brand {
+        padding: 1.8rem 0rem;
+        margin: 1rem .2rem;
+        width: 100% !important;
+        height: 200px;
+    }
+    .single-brand img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .site-main .brand-area .experience-area {
+        padding: 1.3rem;
+    }
+    /* end brand area */
+    /* start projects styling */
+    .site-main .project-area {
+        padding: 4rem 0;
+    }
+    .site-main .project-area .button-groups button+button {
+        padding-left: 1rem;
+    }
+    /* end projects styling */
+    /* about me */
+    .site-main .about-area .about-title p {
+        padding: 1rem 0rem;
+    }
+    /* end about me */
+    /* start subscribe */
+    .site-main .subscribe-area .subscribe .subscribe-title h4 {
+        font: normal 700 20px/30px 'roboto';
+    }
+    .site-main .subscribe-area .subscribe .subscribe-title p {
+        color: whitesmoke;
+        padding: 1rem 4rem;
+    }
+    .site-main .subscribe-area .subscribe form {
+        margin-left: 2% !important;
+    }
+    .site-main .subscribe-area .subscribe form .input-textbox input {
+        width: 300px;
+        font: normal 500 15px/20px 'roboto';
+    }
+    .site-main .subscribe-area .subscribe form .btn-submit {
+        margin: 2rem 2rem;
+    }
+}
+@media (max-width: 768px)  and (min-width: 576px){
+    /* cv area */
+    .site-main .cv-area .Cv .CvContainer {
+    
+        margin-top:30% !important;
+        padding: 0rem !important;
+    }
+    .site-main .cv-area .Cv .CvContainer img{
+        margin-left: 0% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* end cv area */
+    /* hire area */
+    .site-main .hire-area .hire .formContainer {
+       margin-left: 20% !important;
+    }
+    #spinner{
+        margin-top:10% !important;
+        margin-right: 0% !important;
+    }
+    .thanks-modal{
+        margin-left: 40% !important;
+        margin-top: 50% !important;
+        width: 250px !important;
+        height: 100px !important;
+        padding: 1rem 2rem;
+        z-index: 1;
+      
+       
+    
+    }
+
+}
+
+@media (max-width: 1199.98px) and (min-width: 992px) {
+    .site-main .site-banner .site-title h1 {
+        font-size: 3rem;
+    }
+    .site-main .site-banner .site-title h4 {
+        font: normal 700 20px/25px 'roboto'
+    }
+}

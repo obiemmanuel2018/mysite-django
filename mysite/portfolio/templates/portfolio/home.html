@@ -1,0 +1,45 @@
+ {% extends 'base.html' %}{{% block content %}
+<header class='header_area' style="position: fixed;z-index:1;background:white;width:100%;">
+    <!-- navbar area -->
+    {% include "portfolio/navbar.html" %}
+    <!-- end navbar -->
+
+</header>
+
+<main class='site-main'>
+    <!-- hire me area -->
+    {% include "portfolio/hire_form.html" %}
+    <!-- end hire me area -->
+    <!-- Cv area -->
+    {% include "portfolio/my_cv.html" %}
+    <!-- end Cv area -->
+    <!-- banner area -->
+    {% include "portfolio/banner.html" %}
+    <!-- end banner area -->
+
+    <!-- About area -->
+    {% include "portfolio/about.html" %}
+    <!-- end about area -->
+    <!-- band area -->
+    {% include "portfolio/brand.html" %}
+    <!-- end band area -->
+    <!-- start services area -->
+    {% include "portfolio/services.html" %}
+    <!-- end services area -->
+    <!-- start projects area -->
+    {% include "portfolio/projects.html" with projects=projects%}
+    <!-- end projects area -->
+
+    <!-- About me -->
+    {% include "portfolio/about_me.html" with clients=clients %}
+    <!-- end about me -->
+
+    <!-- subscribe -->
+    {% include "portfolio/subscribe.html" %}
+    <!-- end subscribe area -->
+
+</main>
+
+
+
+{% endblock content %}}

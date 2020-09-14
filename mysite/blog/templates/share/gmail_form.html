@@ -1,0 +1,40 @@
+{% extends 'share/base.html' %} {% block content %}
+<div>
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <table>
+            {% for field in mailform %}
+
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    {{field.errors}}
+                </td>
+            </tr>
+            <tr>
+
+                <td>{{field}}</td>
+            </tr>
+
+            {%endfor%}
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">Send Mail</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if success %}
+                    <p id='success' style="color: lightgreen;">Mail sent successfully</p>
+                    {% endif %} {% if failure %}
+                    <p style="color: red;">opps! mail could not be sent.Check internet connection</p>{% endif %}
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+{% endblock %}

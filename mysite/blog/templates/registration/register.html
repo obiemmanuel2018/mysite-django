@@ -1,0 +1,56 @@
+{% extends 'share/base.html' %} {% block content %}
+
+<form method="POST" enctype="multipart/form-data" class="form">
+    <h2 style="font:normal bold 40px/60px  'Great Vibes';letter-spacing:2px">Sign Up:</h2>
+    {% csrf_token %}
+    <table>
+        {% for field in userform %}
+        <tr>
+
+            <td>{{field}}</td>
+
+        </tr>
+        <tr>
+            <td>{{field.errors}}</td>
+        </tr>
+        {% endfor %} {% for field in profileform %}
+        <tr>
+
+            <td>{{field}}</td>
+        </tr>
+        <tr>
+            <td>{{field.errors}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <li>Image field is not required</li>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="btn btn-primary">Sign Up</button></td>
+
+        </tr>
+        <tr>
+            <td>
+                <p>Already have an account? </p>
+                <a href="{% url 'blog:login' %}"><button type="button" class="btn btn-danger">Sign In</button></a>
+            </td>
+            <td>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+
+
+
+
+
+
+</form>
+
+{% endblock %}

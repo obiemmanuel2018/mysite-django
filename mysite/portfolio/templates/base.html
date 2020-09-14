@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{% static 'portfolio/css/bootstrap.css' %}">
+    <!-- mystyle sheet -->
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="{% static 'portfolio/css/magnific-popup.css' %}">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="{% static 'portfolio/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/owl.theme.default.min.css' %}">
+
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+    <link href="{% static 'portfolio/css/fontawesome/css/fontawesome.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/css/fontawesome/css/brands.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/css/fontawesome/css/solid.css' %}" rel="stylesheet">
+
+    <!-- my javascript codes -->
+    <script src="{% static 'portfolio/js/Jquery_production.js' %}"></script>
+    <!-- isotope -->
+    <script src="{% static 'portfolio/js/isotope-docs.min.js' %}"></script>
+    <!-- magnifig popup  js-->
+    <script src="{% static 'portfolio/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- owl carousel -->
+    <script src="{% static 'portfolio/js/owl.carousel.min.js' %}"></script>
+
+    {% block title %} {% endblock title %}
+</head>
+
+<body onscroll="scrolling()" id='body'>
+    {% block content %} {% endblock content %}
+    <script>
+        function scrolling() {
+            if (document.body.scrollTop > 3000 || document.documentElement.scrollTop > 3000) {
+                $('#nav').slideUp(500);
+
+            } else {
+                $('#nav').slideDown(500);
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

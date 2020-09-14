@@ -1,0 +1,55 @@
+<section class="subscribe-area">
+    <div class="container subscribe">
+        <div class="row">
+            <div class="col-lg-12 text-center subscribe-title">
+                <h4 class="text-uppercase">Get update from anywhere</h4>
+                <p class="para">
+                    subscribe with email
+                </p>
+            </div>
+        </div>
+        <div class="d-sm-flew justify-content-center">
+            <form id='form' class="w-50" method='POST' data-url="{% url 'portfolio:subscribe' %}">
+                <div class="row d-flex flex-row flex-wrap">
+                    <div class="col input-textbox">
+                        <input type="text" id='txtemail' class="form-control" placeholder="Email" name='email'>
+                    </div>
+                    <div class="col">
+                        <div class="btn-submit">
+                            <button id='subscribe' type="button" class="btn btn-success float-right">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div id='subscribe-success' style="justify-content: center;margin-top:3%;display:none">
+                     <p style="color:aqua;font:normal 500 15px/15px 'roboto'">Thanks for subscribing..</p>
+                   
+                </div>
+            
+                {% csrf_token %}
+            </form>
+
+        </div>
+
+    </div>
+</section>
+<script>
+    $(document).ready(function() {
+        $('#subscribe').click(function() {
+            $('#subscribe-success').show(500)
+            var serializeData = $('#form').serialize();
+            console.log(serializeData)
+            var email = $('#txtemail').val()
+            $.ajax({
+                url: $('#form').data('url'),
+                data: serializeData,
+                email,
+                type: 'post',
+                success: function(response) {
+                    console.log(response)
+                }
+            })
+           
+            $('#form')[0].reset();
+        })
+    })
+</script>

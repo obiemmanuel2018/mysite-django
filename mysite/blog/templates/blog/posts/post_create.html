@@ -1,0 +1,37 @@
+{% extends 'blog/posts/base.html' %} {% load static %}{% block content%}
+<div class=" row " style="margin-top: 2%;">
+    <div class="col-4 side-image" style="border-right:2px solid whitesmoke;height:450px;overflow:hidden">
+        <!-- background icon image -->
+        <img src="{% static 'images/background icons/flower.jpg'%}" alt="">
+
+
+    </div>
+    <div class="col-lg-4 col-sm-12 col-md-12 " style="padding: 30px 50px;border-right:2px solid whitesmoke;height:450px;">
+        {% if user.is_superuser %}
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %} {{form.as_p}}
+            <button type="submit" class="btn btn-danger">create post</button>
+        </form>
+        {% else %}
+        <p>Only the Admin can create a post </p>
+        {% endif %}
+
+    </div>
+    <div class="col-4 side-image" style="height:450px; overflow:hidden">
+        <!-- background icon image -->
+        <img src="{% static 'images/background icons/infographics.jpg' %}" alt="">
+
+    </div>
+</div>
+
+<script>
+    var editor = new MediumEditor('.editable');
+    $(document).ready(function(){
+        $('#id_author').value='Emmanuel'
+
+    });
+</script>
+
+
+
+{% endblock %}

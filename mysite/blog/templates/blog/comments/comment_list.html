@@ -1,0 +1,80 @@
+ {% load static %} {% if user.is_authenticated and user.is_superuser %}
+
+<div>
+
+    <span>Total comments: <b style="color: red;" id='total_comments'>{{post.comments.all.count}}</b></span>
+    <span style="float: right;"> Approved comments: <b  class='approved_comments' style="color:lightgreen;font-size:20px" >{{post.approved_comments.count}}</b></span>
+</div>
+
+<!--  -->
+{% if not post.comments.all %}
+<p>No Comment.....</p>
+{%else%} {% for comment in post.comments.all%}
+<div class="media" style="margin-top:6%;overflow:hidden;margin-bottom:10%" id='media{{comment.id}}'>
+    <img style="width: 50px;height:50px;border-radius:100%" src="{{comment.author_profile_pic.url}}" class="align-self-start mr-3" alt="...">
+    <div class="media-body">
+
+
+        <h6 class="mt-0 ">{{comment.author}}</h6>
+
+        <p> {{comment.body|safe|linebreaksbr}}</p>
+
+
+        <p>{{comment.created_date}}</p>
+        <a class='delete' id='delete{{comment.id}}' href="javascript:void(0)" data-url="{% url 'blog:remove_comment' comment.id %}"><button  type="button " class="btn btn-danger "><span>&times;</span></button></a> {% if not comment.approved_comment %}
+
+        <a class='approve' id='approve{{comment.id}}' href="javascript:void(0)" data-url="{% url 'blog:approve_comment' comment.id %}"> <button type="button " class="btn btn-success "><span>&#10003;</span></button></a>
+        {% endif %}
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{%endfor%}
+<!--  -->
+
+{%endif%}
+<!--  -->
+{%else%}
+<!--  -->
+{%if not post.approved_comments %}
+<p>No comment...</p>
+
+{%else%}
+
+<!--  -->
+<div style="width: 100%;height:50px ">
+    <span style="position:absolute;right:7%; ">Comments: <b style="color:lightgreen;font-size:20px ">{{post.approved_comments.count}}</b></span>
+</div>
+
+<!--  -->
+
+{% for comment in post.approved_comments %}
+<div class="media" id={{comment.id}}>
+    <img style="width: 50px;height:50px;border-radius:100% " src="{{comment.author_profile_pic.url}}" class="align-self-start mr-3 " alt="... ">
+    <div class="media-body ">
+        <h5 class="mt-0 ">{{comment.author}}</h5>
+
+        <p>{{comment.body|safe|linebreaksbr}}</p>
+    </div>
+</div>
+{%endfor%}
+<!--  -->
+{%endif%}
+<!--  -->
+{% endif %}
+</div>

@@ -1,0 +1,28 @@
+{% extends 'blog/posts/base.html' %} {% block content%} {% load static %}
+<div class=" row " style="margin-top: 2%">
+    <div class="side-image col-4" style="border-right:2px solid whitesmoke;position:sticky;height:450px">
+        <!-- background icon image -->
+        <img src="{% static 'images/background icons/covid19.jpg' %}" alt="">
+
+    </div>
+    <div class="col-lg-4  col-sm-12 col-md-12 " style="padding: 30px 50px;border-right:2px solid whitesmoke;height:450px;overflow-y:scroll">
+        <form method="POST">
+
+            {% csrf_token %} {{form.as_p}}
+
+            <button type="submit" class="btn btn-danger">Update</button>
+        </form>
+
+    </div>
+    <div class=" side-image col-4" style="height:450px;overflow:hidden">
+        <!-- background icon image -->
+        <img src="{% static 'images/background icons/flower.jpg' %}" alt="">
+
+    </div>
+</div>
+<script>
+    var editor = new MediumEditor('.editable');
+</script>
+
+
+{% endblock %}

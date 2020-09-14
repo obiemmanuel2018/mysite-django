@@ -1,0 +1,227 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <!-- mystyle sheet -->
+    <link rel="stylesheet" href="{% static 'blog/css/mystyle.css' %}">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+    <!-- medius-editor -->
+    <link rel="stylesheet" href="{% static 'blog/css/medium-editor.min.css' %}">
+    <script src="{% static 'blog/js/medium-editor.min.js' %}"></script>
+    <!-- my javascript codes -->
+    <script src="{% static 'blog/js/myCodes.js' %}"></script>
+    <script src="{% static 'blog/js/Jquery_production.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link href="{% static 'blog/css/fontawesome/css/fontawesome.css' %}" rel="stylesheet">
+    <link href="{% static 'nlog/css/fontawesome/css/brands.css' %}" rel="stylesheet">
+    <link href="{% static 'blog/css/fontawesome/css/solid.css' %}" rel="stylesheet">
+    <script>
+        var csrftoken = Cookies.get('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+
+
+
+</head>
+
+<body onscroll="scrolling()" onload="scrollDown()">
+
+
+    <!-- 
+     -->
+
+    <div class="row blogNav">
+        <div class="col-12">
+            {% if not post %}
+            <ul class="nav-container nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'portfolio:home' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog:post_create' %}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item" style="background-color: black;">
+                    <a class="nav-link" href="{% url 'blog:logout' %}">Logout<i class='fas fa-door-open'></i></a>
+                </li>
+                {% else %}
+                <li class="nav-item" style="background-color: black;">
+                    <a class="nav-link" href="{% url 'blog:login' %}">Login<i class='fas fa-door-closed'></i></a>
+                </li>
+                {% endif %}
+
+
+            </ul>
+            {%endif%}
+            <!-- blog div -->
+            {% if not post.id %}
+            <div class="blog">
+                <h2>BLOG</h2>
+                <a style="font:normal 500 20px/15px 'roboto'" href="{% url 'password_change' %}">Change password</a>
+
+
+            <div class="search">
+                <form class="form-inline" method='POST' id="searchform">
+                   
+                    <div class="form-group mx-sm-3 mb-2">
+                      <input type="text" class="form-control" id="searchInput" placeholder="search..">
+                    </div>
+                    <button id='search' type="button" class="btn btn-primary mb-2">Search</button>
+                  </form>
+                 
+            </div>
+            </div>
+            {% else %}
+            <div class="blog-author row">
+                <!-- <div class="row Oimage" id="icons">
+                    <div class="col-12">
+                        <img class="logo" src="icons/icons8-whatsapp-480.png" alt="" onmouseover="changeColor('whatsapp')" onmouseout="changeColor('')">
+
+                    </div>
+                    <div class="col-12">
+                        <img class="logo" src="icons/icons8-instagram-96.png" alt="" onmouseover="changeColor('instagram')" onmouseout="changeColor('')">
+
+                    </div>
+                    <div class="col-12">
+                        <img class="logo" src="icons/icons8-facebook-circled-96.png" alt="" onmouseover="changeColor('facebook')" onmouseout="changeColor('')">
+                    </div>
+
+
+
+                </div> -->
+                <div class="col-lg-1 col-sm-1 col-md-1">
+
+                    <div style="margin-top: 0px;margin-left:5%" class="back-btn">
+                        <a href="{% url 'blog:post_list' %}"><button  type="button" class="btn btn-outline-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                Back</button></a>
+
+                    </div>
+
+
+                    <div style="margin-top:40px" class="share-logos" id="icons">
+                        <p>share:</p>
+                        <div class="logo">
+                            <a href="{% url 'blog:send_mail' post_id=post.id %}"><img class="logo" style="width: 40px;" src="{%static 'blog/images/logos/gmail.svg' %}" alt="" onmouseover="changeColor('gmail')" onmouseout="changeColor('')"></a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-11 col-md-11 ">
+
+
+                    <img class='blog-image' style="width: 400px;border-radius:5px;box-shadow:2px 2px 10px black" src={{post.image.url}} alt=" ">
+                </div>
+                <div class="col-lg-6 col-sm=12 col-md-12 blog-col ">
+                    <h2>BLOG</h2>
+                    <h4><span>&#9880;</span>{{request.user}}<span>&#9880;</span></h4>
+                </div>
+
+
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block content %} {% endblock %}
+
+
+
+
+
+
+</body>
+
+<script>
+    function is_active(elem) {
+        if (elem == 'draft') {
+            document.getElementById('draft').style.display = 'flex'
+
+        } else {
+            document.getElementById('draft').style.display = 'none'
+        }
+
+        if (elem == 'all post') {
+            document.getElementById('all').style.display = 'flex'
+        } else {
+            document.getElementById('all').style.display = 'none'
+        }
+
+
+    }
+
+
+    $(document).ready(function(){
+
+        $('#search').click(function(){
+            $('#search').prop('disabled',true);
+
+            var csrftoken = $('#searchform').serialize();
+            var search_val = $('#searchInput').val();
+            if(search_val ){
+                $.ajax({
+                    url:"{%url 'blog:post_list' %}",
+                    data:{
+                        csrfmiddlewaretoken:csrftoken,
+                        query:search_val
+    
+                    },
+                    type:'post',
+                    success:function(response){
+                       
+                        
+                           if(response[0]){
+                            for(i in response){ 
+                                console.log(response)
+                                $('#searchresult').append('<a href="'+ response[i][1] +'"><p> ' +response[i][0]+ '</p></a>')
+                            }
+    
+                           }
+                           else{
+                            $('#searchresult').append('<h4 style="color:whitesmoke">No post found</h4>')
+                               
+                           }
+                          
+                           $('#searchresult').slideDown()
+                        
+                     
+                      
+                        
+                    }
+                });
+
+            }
+        });
+        
+        $('#closeSearch').click(function(){
+            $('#searchresult').slideUp();
+            $('#search').prop('disabled',false);
+
+        })
+       
+      
+    })
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+{% load static %}
+<section class="about-area">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="about-title">
+                    <h1 class="text-uppercase title-h1">
+                        Client say about me
+                    </h1>
+                    <p class="para">
+                        CLient say about my work.Legit
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container carousel py-lg-5">
+        {% if not clients %}
+
+        <div class="col-12 text-center">
+            <p class="title-text text-uppercase">No CLient Yet!</p>
+        </div>
+        {%else%}
+        <div class="owl-carousel owl-theme">
+            {%for client in clients %}
+            <div class="client row">
+                <div class="col-lg-4 col-md-12 client-img">
+                    <img src="{{client.image.url}}" alt="" class="img-fluid">
+                </div>
+                <div class="col-lg-8 col-md-12 about-client">
+                    <h4 class="text-uppercase">
+                        {{client.name}}
+                    </h4>
+                    <p class="para">
+                        {{client.feed_back}}
+                </div>
+            </div>
+            {%endfor%} {%endif%}
+
+            <div class="owl-dots">
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        $('.site-main .about-area .owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            dots: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                544: {
+                    items: 2
+                }
+            }
+
+        })
+
+    })
+</script>

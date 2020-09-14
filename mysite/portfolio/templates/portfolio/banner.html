@@ -1,0 +1,88 @@
+ {% load static %}
+<secton class="site-banner" id='home'>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 site-title col-sm-12">
+                <h3 class="title-text">Hey
+
+                </h3>
+                <img style='width:150px;height:150px;border-radius:50%' src="{% static 'portfolio/images/admin/admin.jpg' %}" alt="admin" class="img-fluid">
+                <h1 class="h1 title text-uppercase">I am Obi</h1>
+                <h4 class="title text text-uppercase">Full Stack Web developer</h4>
+                <div class="site-buttons">
+                    <div class="d-flex flex-row flex-wrap">
+                        <button type="button" class="btn button-primary mr-4 text-uppercase" id='hire_me'>hire me</button>
+                        <button type="button" class="btn button-secondary mr-4 text-uppercase" id='Cv-button'>Get cv</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 ">
+                <div class="banner-img">
+                    <img src="{% static 'portfolio/images/Mobile-App.png' %}" id='1' class="img-fluid  image"></img>
+                    <img src="{% static 'portfolio/images/web.jpg' %}" id='2' class="img-fluid image"></img>
+                    <img src="{% static 'portfolio/images/seo.jpg' %}" id='3' class="img-fluid image"></img>
+
+
+                </div>
+
+
+                <i style="display: none;" id="prev" class="fas fa-arrow-left" aria-hidden="true"></i>
+                <i style="display: none;" id='next' class="fas fa-arrow-right" aria-hidden="true"></i>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</secton>
+
+
+<script>
+    $(document).ready(function() {
+        var slideIndex = 0;
+        slideShow(0)
+        setInterval(function() {
+            $('#next').trigger('click')
+        }, 5000)
+        total_images = $.each($('.image'), function(index, image) {}).length
+        $('#prev').click(function() {
+            if (slideIndex == 0) {
+                slideIndex = total_images
+            }
+            slideIndex = slideIndex - 1;
+            slideShow(slideIndex);
+
+        })
+        $('#next').click(function() {
+            if (slideIndex == total_images - 1) {
+                slideIndex = 0
+                slideShow(slideIndex)
+            } else {
+                slideIndex = slideIndex + 1;
+                slideShow(slideIndex);
+
+            }
+
+
+        })
+
+
+        function slideShow(n) {
+            $.each($('.image'), function(index, image) {
+                $('#' + image.id).hide()
+            })
+            $.each($('.image'), function(index, image) {
+                if (index == n) {
+                    $('#' + image.id).show(1000)
+                }
+
+            })
+
+        }
+
+
+    })
+</script>

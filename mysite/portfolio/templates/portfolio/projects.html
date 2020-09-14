@@ -1,0 +1,89 @@
+{% load static %}
+<section class="project-area" id="portfolio">
+    <div class="container">
+        <div class="project-title pb-5">
+            <h1 class="text-uppercase title-h1">
+                Recently done projects
+
+            </h1>
+            <h1 class="text-uppercase title-h1">
+                quality work
+            </h1>
+
+        </div>
+        <div class="button-groups">
+            <button type="button active" data-filter='*'>All</button>
+            <button type="button" data-filter=".Web">Web</button>
+            <button type="button" data-filter=".Mobile">Mobile</button>
+            <button type="button" data-filter=".Seo">Seo</button>
+        </div>
+        <div class="row grid">
+            {% if not projects %}
+
+            <div class="col-12 text-center">
+                <h4 class="title-text text-uppercase">No recently Done Porject</h4>
+            </div>
+            {%else%} {%for project in projects %}
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item {{project.category}}">
+                <div class="our-project">
+                    <div class="img">
+                        <a class="test-popup-link" href="{{project.image.url}}">
+                            <img src="{{project.image.url}}" alt="" class="img-fluid">
+                        </a>
+
+                    </div>
+                    <div class="title py-4">
+                        <h4 class="text-uppercase">
+                            {{project.name}}
+                        </h4>
+                        <span class="text-secondary">
+                            {{project.category}}, porfolio
+                        </span><br>
+                        <a href="{{project.url}}">
+                            <button type="button" class="btn btn-danger">Go Live</button>
+
+                        </a>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            {%endfor%} {%endif%}
+
+
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        let $btn = $('.project-area .button-groups button');
+        $btn.click(function(e) {
+
+            $('.project-area .button-groups button').removeClass('active');
+            e.target.classList.add('active')
+
+            let selector = $(e.target).attr('data-filter')
+            $('.project-area .grid').isotope({
+                filter: selector
+            })
+            return false;
+
+
+        })
+
+        $('.project-area .grid .test-popup-link').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+            // other options
+        });
+
+
+
+    })
+</script>
